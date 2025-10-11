@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ZAZAT PARFUM - عطور الفخامة والرقي</title>
 
-<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
@@ -16,439 +16,230 @@
   *{box-sizing:border-box}
   body{
     margin:0;
-    font-family:"El Messiri",sans-serif;
+    font-family:"Playfair Display",serif;
     background:var(--dark);
     color:#eee;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
     min-height:100vh;
-    position:relative;
   }
 
-  /* sparkle background */
   #sparkle-bg{
-    position:fixed; inset:0; z-index:-2; overflow:hidden;
+    position:fixed; inset:0; z-index:-2;
     background: radial-gradient(circle at 50% 20%, #0d0d0d 0%, #000 65%);
   }
   .sparkle{
-    position:absolute;
-    background: radial-gradient(circle,#ffea9f,rgba(255,234,159,0));
-    border-radius:50%;
-    opacity:0.8;
-    pointer-events:none;
-    animation: rise linear infinite;
+    position:absolute; background: radial-gradient(circle,#ffea9f,rgba(255,234,159,0));
+    border-radius:50%; opacity:0.8; pointer-events:none; animation: rise linear infinite;
   }
   @keyframes rise{ from{ transform:translateY(0); } to{ transform:translateY(-120vh) scale(.8); opacity:0; } }
 
-  /* top welcome bar */
-  .topbar{
-    width:100%;
-    background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-    color:var(--gold1);
-    text-align:center;
-    padding:10px 12px;
-    border-bottom:1px solid rgba(226,181,63,0.12);
-    position:relative;
-    z-index:6;
-    overflow:hidden;
-  }
-  .welcome-marquee{
-    display:inline-block;
-    font-weight:600;
-    letter-spacing:0.6px;
-    animation: marquee 12s linear infinite;
-    white-space:nowrap;
-  }
-  @keyframes marquee{ 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
+  .topbar{ background:rgba(0,0,0,0.4); color:var(--gold1); text-align:center; padding:10px; }
+  .welcome-marquee{ animation: marquee 12s linear infinite; display:inline-block; white-space:nowrap; font-weight:600; }
+  @keyframes marquee{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
 
-  header{
-    padding:20px 14px;
-    text-align:center; z-index:5;
-  }
-  header h1{
-    margin:0; font-size:28px;
-    background:linear-gradient(45deg,var(--gold1),var(--gold2));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
+  header{text-align:center; padding:18px;}
+  header h1{margin:0;font-size:30px;background:linear-gradient(45deg,var(--gold1),var(--gold2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
-  /* search */
-  .search-wrap{
-    display:flex; justify-content:center; padding:18px 14px 6px; gap:10px;
-    z-index:5;
-  }
-  .search {
-    width:100%; max-width:760px; display:flex; gap:10px; align-items:center;
-    background:rgba(255,255,255,0.03); border-radius:10px; padding:8px;
-    border:1px solid rgba(255,255,255,0.03);
-  }
-  .search input{
-    background:transparent; border:none; outline:none; color:#fff;
-    font-size:16px; padding:8px; flex:1;
-  }
-  .search .count { color:var(--muted); font-size:14px; }
-
-  /* products grid */
   .products{
-    display:grid;
-    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
-    gap:26px;
-    width:100%;
-    max-width:1200px;
-    margin:18px auto 60px;
-    padding:0 16px;
-    z-index:2;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:26px;max-width:1200px;margin:20px auto;padding:0 16px;
   }
-
   .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35));
-    border:1px solid rgba(255,255,255,0.03);
-    border-radius:14px; overflow:hidden; position:relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    transform-origin:center; transition:transform .35s, box-shadow .35s;
-    backdrop-filter: blur(4px);
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.35));
+    border-radius:14px;overflow:hidden;text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    transition:transform .3s;
   }
-  .card:hover{ transform:translateY(-10px); box-shadow: 0 20px 50px rgba(226,181,63,0.12); }
+  .card:hover{transform:translateY(-10px);}
+  .card img{width:100%;height:320px;object-fit:cover;}
+  .title{color:var(--gold1);font-weight:700;margin-top:8px;}
+  .desc{color:var(--muted);font-size:0.95rem;padding:6px 10px;min-height:60px;}
+  .price{color:#fff;font-weight:800;margin:6px 0;}
+  .actions{display:flex;justify-content:center;gap:10px;margin-bottom:14px;}
+  .btn{padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700;border:none;}
+  .btn.detail{background:transparent;color:var(--gold1);border:1px solid rgba(226,181,63,0.15);}
+  .btn.buy{background:linear-gradient(45deg,var(--gold1),var(--gold2));color:#111;}
 
-  .card .img{
-    width:100%; height:320px; overflow:hidden; display:flex; align-items:center; justify-content:center;
-    border-bottom:1px solid rgba(255,255,255,0.03); background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.5));
-  }
-  .card .img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
-  .card:hover .img img{ transform:scale(1.05); }
-
-  .card .body{ padding:14px; text-align:center; }
-  .title{ color:var(--gold1); font-weight:700; margin:6px 0; font-size:1.05rem; }
-  .desc{ color:var(--muted); font-size:0.95rem; min-height:68px; margin:6px 0 10px; line-height:1.45; }
-  .price{ color:#fff; font-weight:800; margin:6px 0 10px; }
-
-  .actions{ display:flex; gap:10px; justify-content:center; margin-top:8px; }
-  .btn{
-    padding:10px 14px; border-radius:8px; cursor:pointer; border:none; font-weight:700;
-  }
-  .btn.detail{
-    background:transparent; color:var(--gold1); border:1px solid rgba(226,181,63,0.15);
-  }
-  .btn.buy{
-    background:linear-gradient(45deg,var(--gold1),var(--gold2)); color:#111;
-  }
-
-  /* popup modal */
-  .modal-backdrop{
-    position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center;
-    z-index:9999; padding:20px;
-  }
-  .modal{
-    width:100%; max-width:920px; background: linear-gradient(180deg,#0f0f0f,#070707);
-    border-radius:12px; overflow:hidden; display:flex; gap:18px; box-shadow:0 20px 60px rgba(0,0,0,0.8);
-  }
-  .modal .left{ flex:1; min-width:300px; max-height:80vh; overflow:hidden; }
-  .modal .left img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .modal .right{ flex:1; padding:22px; display:flex; flex-direction:column; justify-content:space-between; }
-  .modal h3{ margin:0; color:var(--gold1); font-size:1.4rem; }
-  .modal p{ color:#ddd; line-height:1.6; margin-top:10px; }
-  .modal .modal-price{ font-weight:800; margin-top:12px; color:#fff; }
-  .modal .modal-actions{ display:flex; gap:12px; margin-top:18px; }
-  .modal .close{ position:absolute; top:10px; left:12px; color:#ddd; cursor:pointer; font-size:22px; }
-
-  /* social buttons vertical */
-  .social-fixed{
-    position:fixed; left:20px; bottom:20px; display:flex; gap:12px; flex-direction:column; z-index:9998;
-  }
-  .social-fixed a{
-    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    color:#fff; box-shadow:0 10px 26px rgba(0,0,0,0.45); text-decoration:none;
-  }
-  .wh{ background:#25d366; }
-  .ig{ background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-
-  footer{ text-align:center; padding:18px; color:var(--gold2); border-top:1px solid rgba(226,181,63,0.08); }
-
-  /* small responsiveness */
-  @media (max-width:900px){
-    .modal{ flex-direction:column; max-height:90vh; }
-    .modal .left{ height:42vw; }
-  }
+  footer{text-align:center;padding:20px;color:var(--gold2);}
 </style>
 </head>
 
 <body>
 
-<div id="sparkle-bg" aria-hidden="true"></div>
+<div id="sparkle-bg"></div>
 
-<!-- top welcome -->
-<div class="topbar">
-  <div class="welcome-marquee">🌸 مرحبًا بكم في ZAZAT PARFUM – عطور الفخامة والرقي</div>
-</div>
+<div class="topbar"><div class="welcome-marquee">✨ مرحبًا بكم في ZAZAT PARFUM – عطور الفخامة والرقي ✨</div></div>
+<header><h1>ZAZAT PARFUM</h1></header>
 
-<header>
-  <h1>ZAZAT PARFUM</h1>
-</header>
-
-<!-- search area -->
-<div class="search-wrap">
-  <div class="search" role="search" aria-label="بحث في المنتجات">
-    <input id="searchInput" type="search" placeholder="ابحث عن عطر بالاسم أو الوصف... (مثال: عود، Oud, Sauvage)" />
-    <div class="count" id="resultCount">عرض 7 منتجات</div>
-  </div>
-</div>
-
-<!-- products -->
 <section class="products" id="products">
 
-  <!-- each card has data-name and data-desc for search & modal -->
-  <article class="card" data-name="Oud Royal" data-desc="عطر ملكي يجسّد جوهر الفخامة الشرقية. العود العنبر المسك الأبيض" tabindex="0">
-    <div class="img"><img src="oud-royal.jpg" alt="Oud Royal"></div>
-    <div class="body">
-      <div class="title">Oud Royal</div>
-      <div class="desc">عطر ملكي يجسّد جوهر الفخامة الشرقية. يمتزج فيه العود النقي بالعنبر والمسك الأبيض ليمنح حضورًا عميقًا لا يُنسى.</div>
-      <div class="price">100 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Oud Royal">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Oud Royal">شراء الآن</button>
-      </div>
+  <!-- Oud Royal -->
+  <article class="card" data-name="Oud Royal">
+    <img src="oud-royal.jpg" alt="Oud Royal">
+    <div class="title">Oud Royal</div>
+    <div class="desc">عطر ملكي يجسّد جوهر الفخامة الشرقية. يمتزج فيه العود النقي بالعنبر والمسك الأبيض ليمنح حضورًا لا يُنسى.</div>
+    <div class="price">100 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <article class="card" data-name="Armani Code Elixir" data-desc="عطر أنيق نغمات اللافندر الباتشولي الأخشاب والعنبر" tabindex="0">
-    <div class="img"><img src="armani-code.jpg" alt="Armani Code Elixir"></div>
-    <div class="body">
-      <div class="title">Armani Code Elixir</div>
-      <div class="desc">عطر أنيق للرجل العصري الذي يوازن بين الغموض والجاذبية. تتراقص فيه نغمات اللافندر والباتشولي مع قاعدة من الأخشاب والعنبر.</div>
-      <div class="price">99 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Armani Code Elixir">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Armani Code Elixir">شراء الآن</button>
-      </div>
+<!-- scandal -->
+<article class="card" data-name="scandal">
+    <img src="jean-paul-gaultier-scandal-le-parfum-eau-de-parfum-n_2048x.webp" alt="scandal">
+    <div class="title">scandal</div>
+    <div class="desc">  قوي مستوحى من الطبيعة البرية، بمزيج البرغموت والفلفل واللافندر.</div>
+    <div class="price">140 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <article class="card" data-name="Malak" data-desc="عطر بدون كحول نفحات العود اليوسفي التوابل" tabindex="0">
-    <div class="img"><img src="malak.jpg" alt="Malak"></div>
-    <div class="body">
-      <div class="title">Malak</div>
-      <div class="desc">تحفة عطرية بدون كحول تناسب النساء والرجال. نفحات العود واليوسفي والتوابل تمتزج في توليفة ناعمة تعبّر عن الجاذبية الدافئة وسحر الأصالة.</div>
-      <div class="price">125 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Malak">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Malak">شراء الآن</button>
-      </div>
+  <!-- Armani Code Elixir -->
+  <article class="card" data-name="Armani Code Elixir">
+    <img src="armani-code.jpg" alt="Armani Code Elixir">
+    <div class="title">Armani Code Elixir</div>
+    <div class="desc">عطر أنيق للرجل العصري بنغمات اللافندر والباتشولي والأخشاب والعنبر.</div>
+    <div class="price">99 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <article class="card" data-name="Stronger With You" data-desc="كستناء سكر مريمية لافندر فانيليا" tabindex="0">
-    <div class="img"><img src="stronger-with-you.jpg" alt="Stronger With You"></div>
-    <div class="body">
-      <div class="title">Stronger With You</div>
-      <div class="desc">عطر مفعم بالشغف والقوة، يجمع بين الكستناء والفانيليا واللافندر في مزيج حسي يعكس الثقة والدفء والرقي.</div>
-      <div class="price">105 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Stronger With You">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Stronger With You">شراء الآن</button>
-      </div>
+  <!-- Malak -->
+  <article class="card" data-name="Malak">
+    <img src="malak.jpg" alt="Malak">
+    <div class="title">Malak</div>
+    <div class="desc">تحفة عطرية بدون كحول بنفحات العود واليوسفي والتوابل، تعبّر عن الجاذبية وسحر الأصالة.</div>
+    <div class="price">125 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <!-- new products -->
-  <article class="card" data-name="Sauvage Dior" data-desc="برغموت فلفل لافندر عنبر فانيليا" tabindex="0">
-    <div class="img"><img src="sauvage.webp" alt="Sauvage Dior"></div>
-    <div class="body">
-      <div class="title">Sauvage Dior</div>
-      <div class="desc">عطر ذكوري قوي وجريء يعكس روح الحرية والانطلاق. مزيج من البرغموت والفلفل واللافندر مع قاعدة من العنبر والفانيليا.</div>
-      <div class="price">100 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Sauvage Dior">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Sauvage Dior">شراء الآن</button>
-      </div>
+  <!-- Invictus Victory Elixir -->
+  <article class="card" data-name="Invictus Victory Elixir">
+    <img src="invictus-victory-elixir-parfum-intense-paco-rabanne.jpg" alt="Invictus Victory Elixir">
+    <div class="title">Invictus Victory Elixir</div>
+    <div class="desc">عطر رجولي مكثف بطابع شرقي دافئ يجمع بين الفانيليا واللبان والفلفل الأسود في تركيبة جذابة.</div>
+    <div class="price">135 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <article class="card" data-name="Bois Noir" data-desc="أخشاب داكنة زهور بيضاء غموض التفرد" tabindex="0">
-    <div class="img"><img src="BOIS-NOIR-Photo-Prestige.webp" alt="Bois Noir"></div>
-    <div class="body">
-      <div class="title">Bois Noir</div>
-      <div class="desc">عطر فاخر يجمع بين الأخشاب الداكنة ولمسة من الزهور البيضاء. يناسب الرجال والنساء الباحثين عن التفرد والغموض الأنيق.</div>
-      <div class="price">110 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Bois Noir">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Bois Noir">شراء الآن</button>
-      </div>
+  <!-- Bleu de Chanel -->
+  <article class="card" data-name="Bleu de Chanel">
+    <img src="Chanel-Bleu-Edp-For-Men-100ml-2_1000x.jpg" alt="Bleu de Chanel">
+    <div class="title">Bleu de Chanel</div>
+    <div class="desc">عطر راقٍ يجمع بين الحمضيات والخشب والعنبر ليعبر عن حرية وروح الرجل العصري.</div>
+    <div class="price">140 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
-  <article class="card" data-name="Poême Lancôme" data-desc="فانيليا زهور بيضاء عسل رقة وشاعرية" tabindex="0">
-    <div class="img"><img src="poeme.webp" alt="Poême Lancôme"></div>
-    <div class="body">
-      <div class="title">Poême Lancôme</div>
-      <div class="desc">عطر أنثوي شاعري يجسد الرقة والقوة مع مزيج من الفانيليا والزهور البيضاء والعسل.</div>
-      <div class="price">85 درهم</div>
-      <div class="actions">
-        <button class="btn detail" data-name="Poême Lancôme">عرض التفاصيل</button>
-        <button class="btn buy" data-name="Poême Lancôme">شراء الآن</button>
-      </div>
+<!-- amirat arabe -->
+<article class="card" data-name="amirat arabe">
+    <img src="Captured_ecran2025-06-29a19.10.25.webp" alt="Dior amirat arabe">
+    <div class="title">amirat arabe</div>
+    <div class="desc"> قوي مستوحى من الطبيعة البرية، بمزيج البرغموت والفلفل واللافندر.</div>
+    <div class="price">140 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
+    </div>
+  </article>
+
+  <!-- Elegance -->
+  <article class="card" data-name="ZAZAT Elegance">
+    <img src="8411061083673_2.jpg" alt="ZAZAT Elegance">
+    <div class="title">ZAZAT Elegance</div>
+    <div class="desc">عطر نسائي فخم بنفحات الزهور البيضاء والفانيليا والعنبر، يجسد الأنوثة والرقي الدائم.</div>
+    <div class="price">120 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
+    </div>
+  </article>
+
+  <!-- Sauvage -->
+  <article class="card" data-name="Dior Sauvage">
+    <img src="sauvage.webp" alt="Dior Sauvage">
+    <div class="title">Dior Sauvage</div>
+    <div class="desc">عطر أسطوري من Dior يجمع بين البرغموت والفلفل واللافندر في مزيج منعش وقوي يعكس الرجولة الحقيقية.</div>
+    <div class="price">150 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
+    </div>
+  </article>
+
+  <!-- Stronger With You Oud -->
+  <article class="card" data-name="Stronger With You Oud">
+    <img src="stronger-with-you.jpg" alt="Stronger With You Oud">
+    <div class="title">Stronger With You Oud</div>
+    <div class="desc">عطر شرقي فاخر من Armani بنفحات العود والفانيليا والعنبر، مزيج من القوة والرقي في زجاجة واحدة.</div>
+    <div class="price">145 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
+    </div>
+  </article>
+
+  <!-- Valentino Uomo Born in Roma -->
+  <article class="card" data-name="Valentino Uomo Born in Roma">
+    <img src="Valentino-Uomo-Born-In-Roma-Eau-de-Toilette-Spray_4.webp" alt="Valentino Uomo Born in Roma">
+    <div class="title">Valentino Uomo Born in Roma</div>
+    <div class="desc">عطر فاخر يجسد أسلوب الحياة الإيطالي العصري، بنفحات الفانيليا والفيتيفر والمريمية.</div>
+    <div class="price">140 درهم</div>
+    <div class="actions">
+      <button class="btn detail">عرض التفاصيل</button>
+      <button class="btn buy">شراء الآن</button>
     </div>
   </article>
 
 </section>
 
 <!-- social -->
-<div class="social-fixed" aria-hidden="false">
-  <a class="wh" title="واتساب" href="https://wa.me/212780591228?text=مرحبًا، أريد معرفة المزيد عن عطور ZAZAT PARFUM" target="_blank" rel="noopener">
+<div class="social-fixed" style="position:fixed;left:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;">
+  <a class="wh" href="https://wa.me/212780591228?text=مرحبًا، أريد معرفة المزيد عن عطور ZAZAT PARFUM" target="_blank" style="background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;">
     <i class="fab fa-whatsapp"></i>
   </a>
-  <a class="ig" title="انستغرام" href="https://www.instagram.com/chugo_38/" target="_blank" rel="noopener">
+  <a class="ig" href="https://www.instagram.com/zazat_parfum/" target="_blank" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;">
     <i class="fab fa-instagram"></i>
   </a>
 </div>
 
-<!-- modal -->
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-hidden="true">
-  <div class="modal" role="document" aria-modal="true">
-    <div class="left"><img id="modalImg" src="" alt=""></div>
-    <div class="right">
-      <div>
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-        <div class="modal-price" id="modalPrice">130 درهم</div>
-      </div>
-      <div>
-        <div class="modal-actions">
-          <button class="btn buy" id="modalBuy">شراء عبر واتساب</button>
-          <button class="btn detail" id="modalClose">إغلاق</button>
-        </div>
-      </div>
-    </div>
-    <div class="close" id="modalX" title="إغلاق">✕</div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 جميع الحقوق محفوظة لـ ZAZAT PARFUM</p>
-</footer>
+<footer>© 2025 جميع الحقوق محفوظة لـ ZAZAT PARFUM</footer>
 
 <script>
-/* sparkles setup */
-(function(){
   const container = document.getElementById('sparkle-bg');
-  if(!container) return;
   for(let i=0;i<40;i++){
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    const size = 2 + Math.random()*5;
-    s.style.width = s.style.height = size + 'px';
-    s.style.left = Math.random()*100 + '%';
-    s.style.top = Math.random()*100 + '%';
-    s.style.animationDuration = (8 + Math.random()*14) + 's';
-    s.style.animationDelay = (-Math.random()*10) + 's';
-    s.style.opacity = 0.35 + Math.random()*0.65;
+    const s=document.createElement('div');s.className='sparkle';
+    const size=2+Math.random()*5;
+    s.style.width=s.style.height=size+'px';
+    s.style.left=Math.random()*100+'%';
+    s.style.top=Math.random()*100+'%';
+    s.style.animationDuration=(8+Math.random()*14)+'s';
+    s.style.animationDelay=(-Math.random()*10)+'s';
+    s.style.opacity=0.35+Math.random()*0.65;
     container.appendChild(s);
   }
-})();
 
-/* search (search both name & desc) */
-const searchInput = document.getElementById('searchInput');
-const resultCount = document.getElementById('resultCount');
-const cards = Array.from(document.querySelectorAll('.card'));
-
-function updateCount(n){
-  resultCount.textContent = `عرض ${n} منتج${n===1?'':'ات'}`;
-}
-
-function filterProducts(q){
-  q = q.trim().toLowerCase();
-  let shown = 0;
-  cards.forEach(card=>{
-    const name = card.dataset.name.toLowerCase();
-    const desc = card.dataset.desc.toLowerCase();
-    if(!q || name.includes(q) || desc.includes(q)){
-      card.style.display = '';
-      shown++;
-    } else {
-      card.style.display = 'none';
+  document.querySelectorAll('.btn.buy').forEach(btn=>{
+    btn.onclick=()=>{
+      const name=btn.closest('.card').dataset.name;
+      const url="https://wa.me/212780591228?text="+encodeURIComponent(`مرحبًا 👋، أود طلب عطر ${name} من ZAZAT PARFUM.`);
+      window.open(url,'_blank');
     }
   });
-  updateCount(shown);
-}
-
-searchInput.addEventListener('input', (e)=>{
-  filterProducts(e.target.value);
-});
-
-/* modal logic */
-const modalBackdrop = document.getElementById('modalBackdrop');
-const modalImg = document.getElementById('modalImg');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalBuy = document.getElementById('modalBuy');
-const modalClose = document.getElementById('modalClose');
-const modalX = document.getElementById('modalX');
-
-function openModal(card){
-  const img = card.querySelector('img').src;
-  const name = card.dataset.name;
-  const desc = card.dataset.desc;
-  modalImg.src = img;
-  modalImg.alt = name;
-  modalTitle.textContent = name;
-  modalDesc.textContent = card.querySelector('.desc').textContent || desc;
-  modalBuy.dataset.name = name;
-  modalBackdrop.style.display = 'flex';
-  modalBackdrop.setAttribute('aria-hidden','false');
-}
-
-function closeModal(){
-  modalBackdrop.style.display = 'none';
-  modalBackdrop.setAttribute('aria-hidden','true');
-}
-
-/* attach detail buttons */
-document.querySelectorAll('.btn.detail').forEach(btn=>{
-  btn.addEventListener('click', (e)=>{
-    const name = e.currentTarget.dataset.name;
-    const card = cards.find(c=> c.dataset.name === name);
-    if(card) openModal(card);
-  });
-});
-
-/* buy buttons (in-card) */
-document.querySelectorAll('.btn.buy').forEach(btn=>{
-  btn.addEventListener('click', (e)=>{
-    const name = e.currentTarget.dataset.name || e.currentTarget.dataset.name;
-    if(name){
-      openWhatsApp(name);
-    }
-  });
-});
-
-/* modal buy */
-modalBuy.addEventListener('click', ()=>{
-  const name = modalBuy.dataset.name;
-  if(name) openWhatsApp(name);
-});
-
-/* modal close */
-modalClose.addEventListener('click', closeModal);
-modalX.addEventListener('click', closeModal);
-modalBackdrop.addEventListener('click', (e)=>{
-  if(e.target === modalBackdrop) closeModal();
-});
-
-/* open whatsapp */
-function openWhatsApp(product){
-  const phone = '212780591228';
-  let msg = `مرحبًا 👋، أود طلب عطر ${product} من ZAZAT PARFUM بسعر 130 درهم.`;
-  const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
-  window.open(url, '_blank');
-}
-
-/* initialize count */
-updateCount(cards.length);
-
-/* keyboard accessibility: open modal on Enter when card focused */
-cards.forEach(card=>{
-  card.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter') openModal(card);
-  });
-});
 </script>
 
 </body>
